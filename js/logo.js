@@ -1,0 +1,1 @@
+export const LOGO = `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.5c4.5 0 7.5 2.2 7.5 6.2 0 5-4.2 10.8-7.5 12.8-3.3-2-7.5-7.8-7.5-12.8 0-4 3-6.2 7.5-6.2Z" fill="currentColor"/></svg>`;

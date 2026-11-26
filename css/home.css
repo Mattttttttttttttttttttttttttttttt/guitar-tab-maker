@@ -1,0 +1,29 @@
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 12px;
+}
+
+.tab-card {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 18px 18px 16px;
+  text-decoration: none;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  transition: border-color 0.12s, background 0.12s, transform 0.12s, box-shadow 0.12s;
+}
+.tab-card:hover {
+  background: var(--bg);
+  border-color: var(--accent-strong);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow);
+}
+.tab-card-title { font-weight: 600; letter-spacing: -0.01em; }
+.tab-card-artist { font-size: 0.875rem; color: var(--text-muted); }
+
+@media (max-width: 600px) {
+  .card-grid { grid-template-columns: 1fr; }
+}

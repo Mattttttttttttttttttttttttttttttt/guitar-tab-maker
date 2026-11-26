@@ -1,0 +1,85 @@
+:root {
+  --bg: #ffffff;
+  --surface: #f6f7f4;
+  --surface-2: #eef0ea;
+  --border: #e3e5df;
+  --border-2: #cfd3c8;
+  --text: #1b1d19;
+  --text-muted: #6c7066;
+  --accent: #caf7a5;
+  --accent-hover: #b9ee90;
+  --accent-strong: #3d7a1c;
+  --on-accent: #1b2e10;
+  --focus: #3d7a1c;
+  --accent-border: rgba(61, 122, 28, 0.35);
+  --overlay: rgba(27, 29, 25, 0.5);
+  --shadow: 0 8px 24px rgba(27, 29, 25, 0.1);
+  --shadow-lg: 0 24px 64px rgba(27, 29, 25, 0.2);
+
+  --nav-h: 52px;
+  --side-pad: 28px;
+  --radius: 6px;
+  --radius-lg: 14px;
+  --font-ui: 'Geist', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'Geist Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; }
+[hidden] { display: none !important; }
+
+* { scrollbar-width: thin; scrollbar-color: var(--border-2) transparent; }
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border-2); border-radius: 3px; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-ui);
+  line-height: 1.5;
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+:focus:not(:focus-visible) { outline: none; }
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+button { font: inherit; color: inherit; background: none; border: none; cursor: pointer; }
+a { color: inherit; }
+
+.page {
+  margin: var(--nav-h) auto 0;
+  max-width: 960px;
+  padding: 0 var(--side-pad) 120px;
+}
+
+.page-title {
+  font-size: clamp(2rem, 5vw, 2.75rem);
+  font-weight: 650;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  padding: 56px 0 32px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border: 1px solid var(--border-2);
+  border-radius: var(--radius);
+  background: var(--bg);
+  text-decoration: none;
+  transition: background 0.12s, border-color 0.12s;
+}
+.btn:hover { background: var(--surface); }
+.btn-primary {
+  background: var(--accent);
+  border-color: transparent;
+  color: var(--on-accent);
+}
+.btn-primary:hover { background: var(--accent-hover); }
