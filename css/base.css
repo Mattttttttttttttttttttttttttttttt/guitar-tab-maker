@@ -4,6 +4,7 @@
   --surface-2: #eef0ea;
   --border: #e3e5df;
   --border-2: #cfd3c8;
+  --tab-line: #2b2d28;
   --text: #1b1d19;
   --text-muted: #6c7066;
   --accent: #caf7a5;
@@ -69,6 +70,7 @@ a { color: inherit; }
   gap: 8px;
   padding: 8px 14px;
   font-size: 0.9rem;
+  line-height: 20px;
   font-weight: 500;
   border: 1px solid var(--border-2);
   border-radius: var(--radius);

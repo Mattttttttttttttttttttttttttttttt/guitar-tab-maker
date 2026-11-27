@@ -1,0 +1,271 @@
+.view-actions { display: flex; justify-content: flex-end; gap: 8px; padding-top: 24px; }
+.view-missing { padding-top: 56px; color: var(--text-muted); }
+
+.tab {
+  --pad-l: 26px;
+  --pad-r: 26px;
+  --ink: var(--tab-line);
+}
+
+/* ── Header ── */
+.tab-head { padding: 8px 0 12px; text-align: center; }
+.tab-title { font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 650; letter-spacing: -0.02em; line-height: 48px; }
+.tab-artist { margin-top: 6px; line-height: 24px; color: var(--text-muted); }
+.tab-meta { margin-top: 20px; text-align: left; font-size: 0.95rem; line-height: 26px; }
+
+/* ── System ── */
+.tab-system { --volta-h: 0px; display: flex; margin-bottom: 20px; overflow-x: auto; break-inside: avoid; }
+.tab-system.has-volta { --volta-h: 18px; }
+.tab-lead { flex: none; width: 44px; }
+.tab-bar { --w: calc(100% - var(--pad-l) - var(--pad-r)); }
+
+.bar-diagrams { position: relative; height: calc(var(--diagrams-h) + var(--volta-h)); }
+.tab-system.has-arcs .bar-diagrams { height: calc(var(--diagrams-h) + 18px + var(--volta-h)); }
+.bar-body { display: flow-root; }
+.bar-staff {
+  position: relative;
+  height: calc(var(--row) * 5 + 1px);
+  margin-bottom: 26px;
+}
+.staff-line {
+  position: absolute;
+  left: 0; right: 0;
+  top: calc(var(--i) * var(--row));
+  height: 0;
+  border-top: 1px solid var(--ink);
+}
+.bar-melody { position: relative; height: 42px; }
+.bar-lyrics { position: relative; height: 22px; }
+
+.lead-body,
+.tab-bar .bar-staff,
+.tab-bar .bar-melody {
+  border-right: 1px solid var(--ink);
+}
+
+/* ── Positioning ── */
+.tab-mark, .tab-strum, .stem, .flag, .jp, .jp-dash, .lyric, .diagram-box {
+  position: absolute;
+  left: calc(var(--pad-l) + var(--w) * var(--r));
+}
+.tab-arc, .jp-tie, .beam, .jp-line {
+  position: absolute;
+  left: calc(var(--pad-l) + var(--w) * var(--r1));
+  width: calc(var(--w) * (var(--r2) - var(--r1)));
+}
+
+/* ── Chord diagrams ── */
+.diagram-box {
+  bottom: 9px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+  transform: translateX(-50%);
+}
+.tab-system.has-arcs .diagram-box { bottom: 27px; }
+.diagram-name { font-size: 0.75rem; font-weight: 600; line-height: 12px; }
+.diagram { display: block; color: var(--ink); }
+
+/* ── Repeats and endings ── */
+.rep-start::before, .rep-end::after {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 16px;
+  background-repeat: no-repeat;
+  background-image:
+    linear-gradient(var(--ink), var(--ink)),
+    linear-gradient(var(--ink), var(--ink)),
+    radial-gradient(circle, var(--ink) 0 2px, transparent 2.5px),
+    radial-gradient(circle, var(--ink) 0 2px, transparent 2.5px);
+  background-size: 3px 100%, 1px 100%, 6px 6px, 6px 6px;
+}
+.rep-start::before {
+  left: 0;
+  background-position: 0 0, 5px 0, 9px calc(var(--row) * 1.5 - 3px), 9px calc(var(--row) * 3.5 - 3px);
+}
+.rep-end::after {
+  right: 0;
+  background-position:
+    right 0 top 0,
+    right 5px top 0,
+    right 9px top calc(var(--row) * 1.5 - 3px),
+    right 9px top calc(var(--row) * 3.5 - 3px);
+}
+
+.volta {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 14px;
+  border-top: 1px solid var(--ink);
+}
+.volta.first { border-left: 1px solid var(--ink); }
+.volta.last { right: 8px; }
+.volta-label { position: absolute; left: 5px; top: 1px; font-size: 0.7rem; font-weight: 600; line-height: 12px; }
+
+/* ── Staff ── */
+.tab-clef, .tab-ts {
+  position: absolute;
+  top: 0; bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  font-weight: 700;
+  line-height: 1;
+}
+.tab-clef { left: 6px; font-size: 0.75rem; }
+.tab-ts { left: 5px; font-size: 0.95rem; }
+.tab-lead .tab-ts { left: 26px; }
+.tab-clef span, .tab-ts span { background: var(--bg); }
+
+/* ── Marks ── */
+.tab-mark {
+  top: calc(var(--i) * var(--row));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 12px;
+  transform: translate(-50%, -50%);
+  line-height: 1;
+  white-space: nowrap;
+}
+.tab-mark.fret {
+  padding: 0 1px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  background: var(--bg);
+}
+.tab-mark.x, .tab-mark.mute { width: 11px; }
+.tab-mark.x::before, .tab-mark.x::after,
+.tab-mark.mute::before, .tab-mark.mute::after {
+  content: '';
+  position: absolute;
+  left: 50%; top: 50%;
+  width: 9px; height: 1.25px;
+  margin: -0.6px 0 0 -4.5px;
+  background: var(--ink);
+}
+.tab-mark.x::before, .tab-mark.mute::before { transform: rotate(45deg); }
+.tab-mark.x::after, .tab-mark.mute::after { transform: rotate(-45deg); }
+.tab-mark.mute {
+  width: 12px; height: 12px;
+  background: var(--bg);
+  border: 1px solid var(--ink);
+  border-radius: 50%;
+}
+.tab-mark.mute::before, .tab-mark.mute::after { width: 6px; margin-left: -3px; }
+
+/* ── Arcs: hammer, pull, slide, tie ── */
+.tab-arc, .jp-tie {
+  border: 1px solid var(--ink);
+  border-bottom: 0;
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+}
+.tab-arc { top: calc(var(--i) * var(--row) - 17px); height: 7px; }
+.jp-tie { top: 1px; height: 5px; }
+.tab-arc.edge-right, .jp-tie.edge-right { right: 0; width: auto; }
+.tab-arc.edge-left, .jp-tie.edge-left {
+  left: 0;
+  right: calc(100% - var(--pad-l) - var(--w) * var(--r2));
+  width: auto;
+}
+.tab-arc-label {
+  position: absolute;
+  left: 50%; bottom: 100%;
+  transform: translateX(-50%);
+  font-size: 0.6rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* ── Strum arrows ── */
+.tab-strum {
+  top: calc(var(--from) * var(--row));
+  height: calc((var(--to) - var(--from)) * var(--row));
+  width: 1px;
+  margin-left: -0.5px;
+  border-left: 1px solid var(--ink);
+}
+.tab-strum::after {
+  content: '';
+  position: absolute;
+  left: -4px;
+  border-left: 3.5px solid transparent;
+  border-right: 3.5px solid transparent;
+}
+.tab-strum.down::after { bottom: 0; border-top: 8px solid var(--ink); }
+.tab-strum.up::after { top: 0; border-bottom: 8px solid var(--ink); }
+
+/* ── Rhythm stems ── */
+.stem {
+  top: calc(var(--a) * var(--row) + var(--ga));
+  height: calc((var(--b) - var(--a)) * var(--row) + var(--gb) - var(--ga));
+  width: 1px;
+  margin-left: -0.5px;
+  border-left: 1px solid var(--ink);
+}
+.beam, .flag {
+  top: calc(5 * var(--row) + var(--stem-h) - 2px - (var(--lvl) - 1) * 4px);
+  height: 0;
+  margin-left: -0.5px;
+  border-top: 2px solid var(--ink);
+}
+.beam { margin-right: -1px; padding-right: 1px; box-sizing: content-box; }
+.flag { width: 6px; }
+
+/* ── Jianpu melody ── */
+.jp {
+  top: 12px;
+  transform: translateX(-50%);
+  font-size: 1.05rem;
+  font-weight: 500;
+  line-height: 16px;
+}
+.jp-acc { position: absolute; right: 100%; top: -1px; font-size: 0.7rem; line-height: 16px; }
+.jp-oct {
+  position: absolute;
+  left: 50%;
+  width: 3px; height: 3px;
+  margin-left: -1.5px;
+  background: var(--ink);
+  border-radius: 50%;
+}
+.jp-oct.up { top: calc(-3px - var(--k) * 4px); }
+.jp-oct.down { top: calc(100% + 2px + var(--lines) * 3px + var(--k) * 4px); }
+.jp-aug {
+  position: absolute;
+  left: calc(100% + 2px);
+  top: 50%;
+  width: 3px; height: 3px;
+  margin-top: -1px;
+  background: var(--ink);
+  border-radius: 50%;
+}
+.jp-dash { top: 20px; width: 12px; height: 0; margin-left: -6px; border-top: 1px solid var(--ink); }
+.jp-dash .jp-aug { left: calc(100% + 3px); }
+.jp-line {
+  top: calc(29px + (var(--lvl) - 1) * 3px);
+  height: 0;
+  margin-left: -5px;
+  padding-right: 10px;
+  box-sizing: content-box;
+  border-top: 1px solid var(--ink);
+}
+
+/* ── Lyrics ── */
+.lyric {
+  top: 1px;
+  transform: translateX(-50%);
+  font-size: 0.9rem;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+@media print {
+  .tab-system { overflow: visible; }
+  #nav, .fab, .view-actions { display: none; }
+  .page { margin: 0; padding: 0; max-width: none; }
+}

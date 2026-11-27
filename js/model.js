@@ -172,7 +172,7 @@ const byTime = (a, b) => a.at - b.at || a.string - b.string;
 function checkTechnique(technique, notes) {
   const target = notes.find(n => !n.mute && n.string === technique.string && Math.abs(n.at - technique.at) < EPS);
   if (!target) return { message: `No note on string ${technique.string} for this ${technique.type}.` };
-  if (!['hammer', 'pull', 'slide'].includes(technique.type)) return { resolved: { ...technique } };
+  if (!['hammer', 'pull', 'slide', 'tie'].includes(technique.type)) return { resolved: { ...technique } };
 
   const previous = notes
     .filter(n => !n.mute && n.fret != null && n.string === technique.string && n.at < technique.at - EPS)
@@ -185,9 +185,10 @@ function checkTechnique(technique, notes) {
   const to = target.fret;
   const valid = technique.type === 'hammer' ? from < to
     : technique.type === 'pull' ? from > to
-    : from !== to;
+    : technique.type === 'slide' ? from !== to
+    : from === to;
   if (!valid) return { message: `${technique.type[0].toUpperCase() + technique.type.slice(1)} from fret ${from} to ${to} is not possible.` };
-  return { resolved: { ...technique, from, to } };
+  return { resolved: { ...technique, from, to, fromAt: previous.at } };
 }
 
 export function resolvePart(tab, part) {
@@ -215,7 +216,7 @@ export function resolvePart(tab, part) {
     if (!string) { warn('The root string needs a chord above the note.', note.at); continue; }
     const fret = note.mute ? null : note.fret ?? chord?.frets[string - 1] ?? null;
     if (!note.mute && fret == null) warn(`String ${string} has no fret here.`, note.at);
-    notes.push({ at: note.at, dur: note.dur, string, fret, mute: !!note.mute, generated: false });
+    notes.push({ at: note.at, dur: note.dur, string, fret, mute: !!note.mute, generated: false, explicit: note.fret != null });
   }
   notes.sort(byTime);
 
@@ -235,7 +236,37 @@ export function resolvePart(tab, part) {
     if (message) warn(message, technique.at);
     else techniques.push(resolved);
   }
+  warnBarCoverage(tab, part, notes, warn);
   return { notes, techniques, warnings };
+}
+
+function coveredBeats(spans, start, end) {
+  let total = 0;
+  let reach = start;
+  for (const [from, to] of [...spans].sort((a, b) => a[0] - b[0])) {
+    const clippedFrom = Math.max(from, reach, start);
+    const clippedTo = Math.min(to, end);
+    if (clippedTo > clippedFrom) total += clippedTo - clippedFrom;
+    reach = Math.max(reach, clippedTo);
+  }
+  return total;
+}
+
+function warnBarCoverage(tab, part, notes, warn) {
+  const perBar = beatsPerBar(part.timeSignature || tab.timeSignature);
+  const layers = [
+    ['guitar part', notes.map(n => [n.at, n.at + n.dur])],
+    ['melody', (part.melody ?? []).map(m => [m.at, m.at + m.dur])],
+  ];
+  for (const [name, spans] of layers) {
+    if (!spans.length) continue;
+    for (let bar = 0; bar < part.bars; bar++) {
+      const filled = coveredBeats(spans, bar * perBar, (bar + 1) * perBar);
+      if (filled < perBar - EPS) {
+        warn(`${partLabel(part)}, bar ${bar + 1}: the ${name} fills ${filled} of ${perBar} beats.`, bar * perBar);
+      }
+    }
+  }
 }
 
 export function validateTab(tab) {

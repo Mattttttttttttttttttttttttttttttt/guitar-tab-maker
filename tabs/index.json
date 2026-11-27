@@ -1,1 +1,7 @@
-[]
+[
+  {
+    "id": "example",
+    "title": "Example Song",
+    "artist": "Matt"
+  }
+]

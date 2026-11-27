@@ -1,0 +1,1202 @@
+{
+  "v": 1,
+  "title": "Example Song",
+  "artist": "Matt",
+  "tuning": [
+    "E",
+    "B",
+    "G",
+    "D",
+    "A",
+    "E"
+  ],
+  "timeSignature": [
+    4,
+    4
+  ],
+  "capo": "0,7",
+  "bpm": 90,
+  "key": "C",
+  "chords": [
+    {
+      "id": "chord-c",
+      "name": "C",
+      "frets": [
+        0,
+        1,
+        0,
+        2,
+        3,
+        null
+      ],
+      "root": 5
+    },
+    {
+      "id": "chord-g",
+      "name": "G",
+      "frets": [
+        3,
+        0,
+        0,
+        0,
+        2,
+        3
+      ],
+      "root": 6
+    },
+    {
+      "id": "chord-am",
+      "name": "Am",
+      "frets": [
+        0,
+        1,
+        2,
+        2,
+        0,
+        null
+      ],
+      "root": 5
+    },
+    {
+      "id": "chord-f",
+      "name": "F",
+      "frets": [
+        1,
+        1,
+        2,
+        3,
+        3,
+        1
+      ],
+      "root": 6
+    }
+  ],
+  "progressions": [
+    {
+      "id": "prog-1",
+      "name": "C G Am F",
+      "steps": [
+        {
+          "chord": "chord-c",
+          "dur": 4
+        },
+        {
+          "chord": "chord-g",
+          "dur": 4
+        },
+        {
+          "chord": "chord-am",
+          "dur": 4
+        },
+        {
+          "chord": "chord-f",
+          "dur": 4
+        }
+      ]
+    }
+  ],
+  "basics": [
+    {
+      "id": "basic-bp",
+      "name": "Bp",
+      "params": [
+        "x",
+        "y"
+      ],
+      "length": 4,
+      "lanes": [
+        {
+          "of": [
+            "R"
+          ]
+        },
+        {
+          "of": [
+            "$x"
+          ]
+        },
+        {
+          "of": [
+            "$y"
+          ]
+        }
+      ],
+      "events": [
+        {
+          "at": 0,
+          "dur": 0.5,
+          "lane": 0,
+          "kind": "pluck"
+        },
+        {
+          "at": 0,
+          "dur": 0.5,
+          "lane": 1,
+          "kind": "pluck"
+        },
+        {
+          "at": 0.5,
+          "dur": 0.5,
+          "lane": 2,
+          "kind": "pluck"
+        },
+        {
+          "at": 1,
+          "dur": 0.5,
+          "lane": 1,
+          "kind": "pluck"
+        },
+        {
+          "at": 1.5,
+          "dur": 0.5,
+          "lane": 2,
+          "kind": "pluck"
+        },
+        {
+          "at": 2,
+          "dur": 0.5,
+          "lane": 1,
+          "kind": "pluck"
+        },
+        {
+          "at": 2.5,
+          "dur": 0.5,
+          "lane": 2,
+          "kind": "pluck"
+        },
+        {
+          "at": 3,
+          "dur": 0.5,
+          "lane": 1,
+          "kind": "pluck"
+        },
+        {
+          "at": 3.5,
+          "dur": 0.5,
+          "lane": 2,
+          "kind": "pluck"
+        }
+      ]
+    },
+    {
+      "id": "basic-strum",
+      "name": "Strum",
+      "params": [],
+      "length": 4,
+      "lanes": [
+        {
+          "of": [
+            "R"
+          ]
+        },
+        {
+          "except": [
+            "R"
+          ]
+        }
+      ],
+      "events": [
+        {
+          "at": 0,
+          "dur": 2,
+          "lane": 0,
+          "kind": "strum",
+          "from": 0,
+          "to": 1
+        },
+        {
+          "at": 2,
+          "dur": 2,
+          "lane": 0,
+          "kind": "strum",
+          "from": 1,
+          "to": 0
+        }
+      ]
+    }
+  ],
+  "parts": [
+    {
+      "id": "part-intro",
+      "kind": "intro",
+      "bars": 2,
+      "chords": [
+        {
+          "at": 0,
+          "dur": 4,
+          "chord": "chord-c",
+          "basic": null
+        },
+        {
+          "at": 4,
+          "dur": 4,
+          "chord": "chord-g",
+          "basic": null
+        }
+      ],
+      "notes": [
+        {
+          "at": 0,
+          "dur": 1,
+          "string": "R",
+          "fret": 3
+        },
+        {
+          "at": 1,
+          "dur": 0.5,
+          "string": 3,
+          "fret": 0
+        },
+        {
+          "at": 1.5,
+          "dur": 0.5,
+          "string": 3,
+          "fret": 2
+        },
+        {
+          "at": 2,
+          "dur": 1.5,
+          "string": 1,
+          "fret": 0
+        },
+        {
+          "at": 3.5,
+          "dur": 0.5,
+          "string": 2,
+          "mute": true
+        },
+        {
+          "at": 4,
+          "dur": 1,
+          "string": "R",
+          "fret": 3
+        },
+        {
+          "at": 5,
+          "dur": 0.5,
+          "string": 2,
+          "fret": 3
+        },
+        {
+          "at": 5.5,
+          "dur": 0.5,
+          "string": 2,
+          "fret": 0
+        },
+        {
+          "at": 6,
+          "dur": 0.5,
+          "string": 4,
+          "fret": 0
+        },
+        {
+          "at": 6.5,
+          "dur": 0.5,
+          "string": 4,
+          "fret": 2
+        },
+        {
+          "at": 7,
+          "dur": 0.5,
+          "string": 1,
+          "fret": 3
+        },
+        {
+          "at": 7.5,
+          "dur": 0.5,
+          "string": 2,
+          "fret": 3
+        },
+        {
+          "at": 3.5,
+          "dur": 0.5,
+          "string": 1,
+          "fret": 0
+        }
+      ],
+      "techniques": [
+        {
+          "at": 1.5,
+          "string": 3,
+          "type": "hammer"
+        },
+        {
+          "at": 5.5,
+          "string": 2,
+          "type": "pull"
+        },
+        {
+          "at": 6.5,
+          "string": 4,
+          "type": "slide"
+        },
+        {
+          "at": 7,
+          "string": 1,
+          "type": "vibrato"
+        },
+        {
+          "at": 7.5,
+          "string": 2,
+          "type": "bend"
+        },
+        {
+          "at": 3.5,
+          "string": 1,
+          "type": "tie"
+        }
+      ],
+      "lyrics": []
+    },
+    {
+      "id": "part-verse-1",
+      "kind": "verse",
+      "number": 1,
+      "bars": 4,
+      "chords": [
+        {
+          "at": 0,
+          "dur": 4,
+          "chord": "chord-c",
+          "basic": {
+            "id": "basic-bp",
+            "args": [
+              [
+                2,
+                3
+              ],
+              [
+                4
+              ]
+            ]
+          }
+        },
+        {
+          "at": 4,
+          "dur": 4,
+          "chord": "chord-g",
+          "basic": {
+            "id": "basic-bp",
+            "args": [
+              [
+                "R",
+                3
+              ],
+              [
+                4
+              ]
+            ]
+          }
+        },
+        {
+          "at": 8,
+          "dur": 4,
+          "chord": "chord-am",
+          "basic": {
+            "id": "basic-strum",
+            "args": []
+          }
+        },
+        {
+          "at": 12,
+          "dur": 4,
+          "chord": "chord-f",
+          "basic": {
+            "id": "basic-bp",
+            "args": [
+              [
+                2,
+                3
+              ],
+              [
+                4
+              ]
+            ]
+          }
+        }
+      ],
+      "notes": [],
+      "techniques": [],
+      "melody": [
+        {
+          "at": 0,
+          "dur": 1,
+          "degree": 3,
+          "octave": 0
+        },
+        {
+          "at": 1,
+          "dur": 0.5,
+          "degree": 5,
+          "octave": 0,
+          "tie": true
+        },
+        {
+          "at": 1.5,
+          "dur": 0.5,
+          "degree": 5,
+          "octave": 0
+        },
+        {
+          "at": 2,
+          "dur": 1,
+          "degree": 6,
+          "octave": 0
+        },
+        {
+          "at": 3,
+          "dur": 1,
+          "degree": 5,
+          "octave": 0
+        },
+        {
+          "at": 4,
+          "dur": 1.5,
+          "degree": 5,
+          "octave": 1
+        },
+        {
+          "at": 5.5,
+          "dur": 0.5,
+          "degree": 3,
+          "octave": 0
+        },
+        {
+          "at": 6,
+          "dur": 2,
+          "degree": 2,
+          "octave": 1,
+          "tie": true
+        },
+        {
+          "at": 8,
+          "dur": 0.25,
+          "degree": 1,
+          "octave": 1
+        },
+        {
+          "at": 8.25,
+          "dur": 0.25,
+          "degree": 2,
+          "octave": 1
+        },
+        {
+          "at": 8.5,
+          "dur": 0.5,
+          "degree": 3,
+          "octave": 0
+        },
+        {
+          "at": 9,
+          "dur": 1,
+          "degree": 4,
+          "octave": 0,
+          "acc": 1
+        },
+        {
+          "at": 10,
+          "dur": 1,
+          "degree": 3,
+          "octave": -1
+        },
+        {
+          "at": 11,
+          "dur": 1,
+          "degree": 0,
+          "octave": 0
+        },
+        {
+          "at": 12,
+          "dur": 4,
+          "degree": 3,
+          "octave": 0
+        }
+      ],
+      "lyrics": [
+        {
+          "at": 0,
+          "text": "Hel-"
+        },
+        {
+          "at": 1,
+          "text": "lo"
+        },
+        {
+          "at": 1.5,
+          "text": "from"
+        },
+        {
+          "at": 2,
+          "text": "the"
+        },
+        {
+          "at": 3,
+          "text": "oth-"
+        },
+        {
+          "at": 4,
+          "text": "er"
+        },
+        {
+          "at": 5.5,
+          "text": "side"
+        },
+        {
+          "at": 6,
+          "text": "I"
+        },
+        {
+          "at": 8.5,
+          "text": "must"
+        },
+        {
+          "at": 9,
+          "text": "have"
+        },
+        {
+          "at": 10,
+          "text": "called"
+        },
+        {
+          "at": 12,
+          "text": "thou-sand"
+        }
+      ]
+    },
+    {
+      "id": "part-verse-2",
+      "kind": "verse",
+      "number": 2,
+      "bars": 4,
+      "chords": [
+        {
+          "at": 0,
+          "dur": 4,
+          "chord": "chord-c",
+          "basic": {
+            "id": "basic-bp",
+            "args": [
+              [
+                2,
+                3
+              ],
+              [
+                4
+              ]
+            ]
+          }
+        },
+        {
+          "at": 4,
+          "dur": 4,
+          "chord": "chord-g",
+          "basic": {
+            "id": "basic-bp",
+            "args": [
+              [
+                "R",
+                3
+              ],
+              [
+                4
+              ]
+            ]
+          }
+        },
+        {
+          "at": 8,
+          "dur": 4,
+          "chord": "chord-am",
+          "basic": {
+            "id": "basic-strum",
+            "args": []
+          }
+        },
+        {
+          "at": 12,
+          "dur": 4,
+          "chord": "chord-f",
+          "basic": {
+            "id": "basic-bp",
+            "args": [
+              [
+                2,
+                3
+              ],
+              [
+                4
+              ]
+            ]
+          }
+        }
+      ],
+      "notes": [],
+      "techniques": [],
+      "melody": [
+        {
+          "at": 0,
+          "dur": 1,
+          "degree": 3,
+          "octave": 0
+        },
+        {
+          "at": 1,
+          "dur": 0.5,
+          "degree": 5,
+          "octave": 0,
+          "tie": true
+        },
+        {
+          "at": 1.5,
+          "dur": 0.5,
+          "degree": 5,
+          "octave": 0
+        },
+        {
+          "at": 2,
+          "dur": 1,
+          "degree": 6,
+          "octave": 0
+        },
+        {
+          "at": 3,
+          "dur": 1,
+          "degree": 5,
+          "octave": 0
+        },
+        {
+          "at": 4,
+          "dur": 1.5,
+          "degree": 5,
+          "octave": 1
+        },
+        {
+          "at": 5.5,
+          "dur": 0.5,
+          "degree": 3,
+          "octave": 0
+        },
+        {
+          "at": 6,
+          "dur": 2,
+          "degree": 2,
+          "octave": 1,
+          "tie": true
+        },
+        {
+          "at": 8,
+          "dur": 0.25,
+          "degree": 1,
+          "octave": 1
+        },
+        {
+          "at": 8.25,
+          "dur": 0.25,
+          "degree": 2,
+          "octave": 1
+        },
+        {
+          "at": 8.5,
+          "dur": 0.5,
+          "degree": 3,
+          "octave": 0
+        },
+        {
+          "at": 9,
+          "dur": 1,
+          "degree": 4,
+          "octave": 0,
+          "acc": 1
+        },
+        {
+          "at": 10,
+          "dur": 1,
+          "degree": 3,
+          "octave": -1
+        },
+        {
+          "at": 11,
+          "dur": 1,
+          "degree": 0,
+          "octave": 0
+        },
+        {
+          "at": 12,
+          "dur": 4,
+          "degree": 3,
+          "octave": 0
+        }
+      ],
+      "lyrics": [
+        {
+          "at": 0,
+          "text": "Ev-"
+        },
+        {
+          "at": 1,
+          "text": "ery"
+        },
+        {
+          "at": 1.5,
+          "text": "day"
+        },
+        {
+          "at": 2,
+          "text": "and"
+        },
+        {
+          "at": 3,
+          "text": "all"
+        },
+        {
+          "at": 4,
+          "text": "through"
+        },
+        {
+          "at": 5.5,
+          "text": "night"
+        },
+        {
+          "at": 6,
+          "text": "I"
+        },
+        {
+          "at": 8.5,
+          "text": "keep"
+        },
+        {
+          "at": 9,
+          "text": "on"
+        },
+        {
+          "at": 10,
+          "text": "ho-"
+        },
+        {
+          "at": 12,
+          "text": "ping"
+        }
+      ]
+    },
+    {
+      "id": "part-chorus-1",
+      "kind": "chorus",
+      "number": 1,
+      "bars": 4,
+      "chords": [
+        {
+          "at": 0,
+          "dur": 4,
+          "chord": "chord-c",
+          "basic": {
+            "id": "basic-bp",
+            "args": [
+              [
+                2,
+                3
+              ],
+              [
+                4
+              ]
+            ]
+          }
+        },
+        {
+          "at": 4,
+          "dur": 4,
+          "chord": "chord-g",
+          "basic": {
+            "id": "basic-bp",
+            "args": [
+              [
+                2,
+                3
+              ],
+              [
+                4
+              ]
+            ]
+          }
+        },
+        {
+          "at": 8,
+          "dur": 4,
+          "chord": "chord-am",
+          "basic": {
+            "id": "basic-bp",
+            "args": [
+              [
+                2,
+                3
+              ],
+              [
+                4
+              ]
+            ]
+          }
+        },
+        {
+          "at": 12,
+          "dur": 4,
+          "chord": "chord-f",
+          "basic": {
+            "id": "basic-bp",
+            "args": [
+              [
+                2,
+                3
+              ],
+              [
+                4
+              ]
+            ]
+          }
+        }
+      ],
+      "notes": [],
+      "techniques": [],
+      "melody": [
+        {
+          "at": 0,
+          "dur": 1,
+          "degree": 5,
+          "octave": 0
+        },
+        {
+          "at": 1,
+          "dur": 1,
+          "degree": 5,
+          "octave": 0
+        },
+        {
+          "at": 2,
+          "dur": 1,
+          "degree": 3,
+          "octave": 0
+        },
+        {
+          "at": 3,
+          "dur": 1,
+          "degree": 2,
+          "octave": 0
+        },
+        {
+          "at": 4,
+          "dur": 1,
+          "degree": 3,
+          "octave": 0
+        },
+        {
+          "at": 5,
+          "dur": 1,
+          "degree": 3,
+          "octave": 0
+        },
+        {
+          "at": 6,
+          "dur": 1,
+          "degree": 2,
+          "octave": 0
+        },
+        {
+          "at": 7,
+          "dur": 1,
+          "degree": 1,
+          "octave": 0
+        },
+        {
+          "at": 8,
+          "dur": 1,
+          "degree": 6,
+          "octave": 0
+        },
+        {
+          "at": 9,
+          "dur": 1,
+          "degree": 6,
+          "octave": 0
+        },
+        {
+          "at": 10,
+          "dur": 1,
+          "degree": 5,
+          "octave": 0
+        },
+        {
+          "at": 11,
+          "dur": 1,
+          "degree": 3,
+          "octave": 0
+        },
+        {
+          "at": 12,
+          "dur": 1,
+          "degree": 2,
+          "octave": 0
+        },
+        {
+          "at": 13,
+          "dur": 1,
+          "degree": 2,
+          "octave": 0
+        },
+        {
+          "at": 14,
+          "dur": 1,
+          "degree": 1,
+          "octave": 0
+        },
+        {
+          "at": 15,
+          "dur": 1,
+          "degree": 1,
+          "octave": 0
+        }
+      ],
+      "lyrics": [
+        {
+          "at": 0,
+          "text": "Sing"
+        },
+        {
+          "at": 2,
+          "text": "out"
+        },
+        {
+          "at": 4,
+          "text": "hold"
+        },
+        {
+          "at": 6,
+          "text": "on"
+        },
+        {
+          "at": 8,
+          "text": "to"
+        },
+        {
+          "at": 10,
+          "text": "the"
+        },
+        {
+          "at": 12,
+          "text": "night"
+        },
+        {
+          "at": 14,
+          "text": "sky"
+        }
+      ]
+    },
+    {
+      "id": "part-chorus-2",
+      "kind": "chorus",
+      "number": 2,
+      "bars": 4,
+      "chords": [
+        {
+          "at": 0,
+          "dur": 4,
+          "chord": "chord-c",
+          "basic": {
+            "id": "basic-bp",
+            "args": [
+              [
+                2,
+                3
+              ],
+              [
+                4
+              ]
+            ]
+          }
+        },
+        {
+          "at": 4,
+          "dur": 4,
+          "chord": "chord-g",
+          "basic": {
+            "id": "basic-bp",
+            "args": [
+              [
+                2,
+                3
+              ],
+              [
+                4
+              ]
+            ]
+          }
+        },
+        {
+          "at": 8,
+          "dur": 4,
+          "chord": "chord-am",
+          "basic": {
+            "id": "basic-bp",
+            "args": [
+              [
+                2,
+                3
+              ],
+              [
+                4
+              ]
+            ]
+          }
+        },
+        {
+          "at": 12,
+          "dur": 4,
+          "chord": "chord-g",
+          "basic": {
+            "id": "basic-bp",
+            "args": [
+              [
+                2,
+                3
+              ],
+              [
+                4
+              ]
+            ]
+          }
+        }
+      ],
+      "notes": [],
+      "techniques": [],
+      "melody": [
+        {
+          "at": 0,
+          "dur": 1,
+          "degree": 5,
+          "octave": 0
+        },
+        {
+          "at": 1,
+          "dur": 1,
+          "degree": 5,
+          "octave": 0
+        },
+        {
+          "at": 2,
+          "dur": 1,
+          "degree": 3,
+          "octave": 0
+        },
+        {
+          "at": 3,
+          "dur": 1,
+          "degree": 2,
+          "octave": 0
+        },
+        {
+          "at": 4,
+          "dur": 1,
+          "degree": 3,
+          "octave": 0
+        },
+        {
+          "at": 5,
+          "dur": 1,
+          "degree": 3,
+          "octave": 0
+        },
+        {
+          "at": 6,
+          "dur": 1,
+          "degree": 2,
+          "octave": 0
+        },
+        {
+          "at": 7,
+          "dur": 1,
+          "degree": 1,
+          "octave": 0
+        },
+        {
+          "at": 8,
+          "dur": 1,
+          "degree": 6,
+          "octave": 0
+        },
+        {
+          "at": 9,
+          "dur": 1,
+          "degree": 5,
+          "octave": 0
+        },
+        {
+          "at": 10,
+          "dur": 1,
+          "degree": 3,
+          "octave": 0
+        },
+        {
+          "at": 11,
+          "dur": 1,
+          "degree": 2,
+          "octave": 0
+        },
+        {
+          "at": 12,
+          "dur": 1,
+          "degree": 1,
+          "octave": 0
+        },
+        {
+          "at": 13,
+          "dur": 1,
+          "degree": 2,
+          "octave": 0
+        },
+        {
+          "at": 14,
+          "dur": 1,
+          "degree": 3,
+          "octave": 0
+        },
+        {
+          "at": 15,
+          "dur": 1,
+          "degree": 5,
+          "octave": 0
+        }
+      ],
+      "lyrics": [
+        {
+          "at": 0,
+          "text": "Sing"
+        },
+        {
+          "at": 2,
+          "text": "out"
+        },
+        {
+          "at": 4,
+          "text": "hold"
+        },
+        {
+          "at": 6,
+          "text": "on"
+        },
+        {
+          "at": 8,
+          "text": "till"
+        },
+        {
+          "at": 10,
+          "text": "the"
+        },
+        {
+          "at": 12,
+          "text": "morn-"
+        },
+        {
+          "at": 14,
+          "text": "ing"
+        }
+      ]
+    }
+  ]
+}
